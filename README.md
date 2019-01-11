@@ -2,14 +2,14 @@
 
 [![](https://img.shields.io/badge/project-LND-blue.svg?style=flat-square)](https://github.com/lightningnetwork/lnd)
 [![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
-[![Dependency Status](https://david-dm.org/LN-Zap/lndconnect.svg?style=flat-square)](https://david-dm.org/LN-Zap/lndconnect)
-[![Build Status](https://travis-ci.org/LN-Zap/lndconnect.svg?branch=master)](https://travis-ci.org/LN-Zap/lndconnect)
+[![Dependency Status](https://david-dm.org/LN-Zap/node-lndconnect.svg?style=flat-square)](https://david-dm.org/LN-Zap/node-lndconnect)
+[![Build Status](https://travis-ci.org/LN-Zap/node-lndconnect.svg?branch=master)](https://travis-ci.org/LN-Zap/node-lndconnect)
 
 > Generate and parse lndconnect uris https://github.com/LN-Zap/lndconnect ⚡️
 
 This package provides utilities for generating and parsing lndconnect uris.
 
-For more information take a look at the [specification of the uri format](https://github.com/LN-Zap/lndconnect/blob/master/lnd_connect_uri.md).
+For more information take a look at the [specification of the uri format](https://github.com/LN-Zap/node-lndconnect/blob/master/lnd_connect_uri.md).
 
 ## Table of Contents
 
@@ -89,7 +89,7 @@ Run the tests suite:
 
 ## Contribute
 
-Feel free to dive in! [Open an issue](https://github.com/LN-Zap/lndconnect/issues/new) or submit PRs.
+Feel free to dive in! [Open an issue](https://github.com/LN-Zap/node-lndconnect/issues/new) or submit PRs.
 
 lndconnect follows the [Contributor Covenant](http://contributor-covenant.org/version/1/3/0/) Code of Conduct.
 

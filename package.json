@@ -31,7 +31,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LN-Zap/lndconnect.git"
+    "url": "git+https://github.com/LN-Zap/node-lndconnect.git"
   },
   "dependencies": {
     "base64url": "^3.0.1"
@@ -44,9 +44,9 @@
   "author": "Tom Kirkpatrick <tkp@kirkdesigns.co.uk> (http://www.kirkdesigns.co.uk/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/LN-Zap/lndconnect/issues"
+    "url": "https://github.com/LN-Zap/node-lndconnect/issues"
   },
-  "homepage": "https://github.com/LN-Zap/lndconnect",
+  "homepage": "https://github.com/LN-Zap/node-lndconnect",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-plugin-add-module-exports": "^1.0.0",
