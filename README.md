@@ -30,22 +30,30 @@ npm install lndconnect --save
 **encodeCert(certPath<string>):**
 
 ```javascript
+import { encodeCert } from 'lndconnect'
+
 const certPath = path.join(__dirname, 'tls.cert')
 const cert = await encodeCert(certPath)
+
 expect(cert).toEqual('MIICuDCCAl...')
 ```
 
 **encodeMacaroon(macaroonPath<string>):**
 
 ```javascript
+import { encodeMacaroon } from 'lndconnect'
+
 const macaroonPath = path.join(__dirname, 'admin.macaroon')
 const macaroon = await encodeMacaroon(macaroonPath)
+
 expect(macaroon).toEqual('macaroon=AgEDbG5kAr...')
 ```
 
 **encode({ host<string>, cert<string>, macaroon<string> }):**
 
 ```javascript
+import { encode } from 'lndconnect'
+
 const connectionString = encode({
   host: '1.2.3.4:10009',
   cert: 'MIICuDCCAl...',
@@ -58,11 +66,13 @@ expect(connectionString).toEqual('lndconnect://1.2.3.4:10009?cert=MIICuDCCAl...&
 **decode({ host<string>, cert<string>, macaroon<string> }):**
 
 ```javascript
-const { host, cert, macaroon } decode('lndconnect://1.2.3.4:10009?cert=MIICuDCCAl...&macaroon=AgEDbG5kAr...')
+import { decode } from 'lndconnect'
+
+const { host, cert, macaroon } = decode('lndconnect://1.2.3.4:10009?cert=MIICuDCCAl...&macaroon=AgEDbG5kAr...')
 
 expect(host).toEqual('1.2.3.4:10009')
-expect(cert).toEqual('cert=MIICuDCCAl...')
-expect(macaroon).toEqual('macaroon=AgEDbG5kAr...')
+expect(cert).toEqual('MIICuDCCAl...')
+expect(macaroon).toEqual('AgEDbG5kAr...')
 ```
 
 ### Testing
