@@ -63,7 +63,7 @@ const connectionString = encode({
 expect(connectionString).toEqual('lndconnect://1.2.3.4:10009?cert=MIICuDCCAl...&macaroon=AgEDbG5kAr...')
 ```
 
-**decode({ host<string>, cert<string>, macaroon<string> }):**
+**decode(lndconnectUri<string>):**
 
 ```javascript
 import { decode } from 'lndconnect'
