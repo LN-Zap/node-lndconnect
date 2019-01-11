@@ -1,6 +1,6 @@
 {
   "name": "lndconnect",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Generate and parse lndconnect uris",
   "main": "./index.js",
   "engines": {
