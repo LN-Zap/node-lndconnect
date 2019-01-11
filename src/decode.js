@@ -7,8 +7,14 @@ import querystring from 'querystring'
  * @return {Object} Lnd connect data (object containing host, cert, and macaroon keys).
  */
 const decode = string => {
+  const res = {}
   const parsedUrl = url.parse(string)
   const parsedQuery = querystring.parse(parsedUrl.query)
+
+  if (parsedUrl.protocol !== 'lndconnect:') {
+    throw new Error('Invalid protocol')
+  }
+
   return {
     host: parsedUrl.host,
     cert: parsedQuery.cert,

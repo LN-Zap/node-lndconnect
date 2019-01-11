@@ -6,7 +6,8 @@ import os from 'os'
 
 import { encodeCert, encodeMacaroon, encode, decode } from '../src'
 
-const HOST = '1.2.3.4:10009'
+const HOSTNAME = '1.2.3.4'
+const PORT = '10009'
 const CERT =
   'MIICuDCCAl6gAwIBAgIQeubXIhKzlGo_scDmWj9VtzAKBggqhkjOPQQDAjA_MR8wHQYDVQQKExZsbmQgYXV0b2dlbmVyYXRlZCBjZXJ0MRwwGgYDVQQDExN0aGVkZWF0aG1hY2hpbmUubGFuMB4XDTE5MDEwMjExMzUxOVoXDTIwMDIyNzExMzUxOVowPzEfMB0GA1UEChMWbG5kIGF1dG9nZW5lcmF0ZWQgY2VydDEcMBoGA1UEAxMTdGhlZGVhdGhtYWNoaW5lLmxhbjBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABFosqs1rkSPwi6gOtuKSd7jMx8XSgadnbjWTbAH14-wFKYP7710JfosoikHW2dwZlUEfbeFNs33T2ifMTqD3hVujggE6MIIBNjAOBgNVHQ8BAf8EBAMCAqQwDwYDVR0TAQH_BAUwAwEB_zCCAREGA1UdEQSCAQgwggEEghN0aGVkZWF0aG1hY2hpbmUubGFugglsb2NhbGhvc3SCBHVuaXiCCnVuaXhwYWNrZXSHBH8AAAGHEAAAAAAAAAAAAAAAAAAAAAGHEP6AAAAAAAAAAAAAAAAAAAGHEP6AAAAAAAAAEOe3k9fX-f6HBMCoVs2HEP6AAAAAAAAAvPC7__6rGHCHEP6AAAAAAAAA8JND8_hwxvqHEP6AAAAAAAAA6rX1aP4vsbaHEP6AAAAAAAAAlbtYbhCVtbeHEP6AAAAAAAAALZmwBSSILp-HEP6AAAAAAAAAKNvxGH98fU-HEP6AAAAAAAAAvOC7LgFuUZGHEP6AAAAAAAAArt5I__4AESIwCgYIKoZIzj0EAwIDSAAwRQIhALwsEmlLQfARQOca0gbF8XnTofXHqnjkBhyO0vTgTH5lAiB-GU2TVpSAsPAoKv6XopMG_oMolgo5T1YByHu202p9Uw'
 const MACAROON =
@@ -35,17 +36,23 @@ test('encodeMacaroon', async t => {
 test('encode', t => {
   t.plan(1)
 
-  const connectionString = encode({ host: HOST, macaroon: MACAROON, cert: CERT })
+  const connectionString = encode({ host: `${HOSTNAME}:${PORT}`, macaroon: MACAROON, cert: CERT })
 
   t.equal(connectionString, CONNECTION_STRING, 'generated expected connection string')
 })
 
-test('decode', t => {
+test('decode (valid)', t => {
   t.plan(3)
 
   const connectionDetails = decode(CONNECTION_STRING)
 
-  t.equal(connectionDetails.host, HOST, 'extracted host')
+  t.equal(connectionDetails.host, `${HOSTNAME}:${PORT}`, 'extracted host')
   t.equal(connectionDetails.cert, CERT, 'extracted cert')
   t.equal(connectionDetails.macaroon, MACAROON, 'extracted macaroon')
+})
+
+test('decode (invalid protocol)', t => {
+  t.plan(1)
+
+  t.throws(() => decode('111' + CONNECTION_STRING), /Invalid protocol/, 'throws an "Invalid protocol" error')
 })
