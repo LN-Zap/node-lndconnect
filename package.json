@@ -1,0 +1,71 @@
+{
+  "name": "lndconnect",
+  "version": "0.1.0",
+  "description": "Generate and parse lndconnect uris",
+  "main": "./dist/index.js",
+  "engines": {
+    "node": ">=6.0.0",
+    "npm": ">=4.0.0"
+  },
+  "scripts": {
+    "test": "babel-tape-runner test/*.js | tap-spec",
+    "lint": "prettier-eslint --write \"./**/*.{js,json,md}\"",
+    "build": "babel src --out-dir dist",
+    "clean": "rm -r ./dist",
+    "preversion": "npm test",
+    "prepack": "npm run build"
+  },
+  "files": [
+    ".babelrc",
+    "config",
+    "dist",
+    "lib"
+  ],
+  "bin": {
+    "lnd": "./dist/bin/lnd",
+    "lnd-install": "./dist/bin/lnd-install"
+  },
+  "pre-push": [
+    "lint",
+    "test"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LN-Zap/lndconnect.git"
+  },
+  "dependencies": {
+    "base64url": "^3.0.1"
+  },
+  "keywords": [
+    "bitcoin",
+    "lightning-network",
+    "lnd"
+  ],
+  "author": "Tom Kirkpatrick <tkp@kirkdesigns.co.uk> (http://www.kirkdesigns.co.uk/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LN-Zap/lndconnect/issues"
+  },
+  "homepage": "https://github.com/LN-Zap/lndconnect",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-add-module-exports": "^1.0.0",
+    "babel-plugin-source-map-support": "^2.0.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
+    "babel-tape-runner": "^3.0.0",
+    "eslint": "^5.12.0",
+    "eslint-config-prettier": "^3.3.0",
+    "prettier": "^1.13.5",
+    "prettier-eslint": "^8.8.1",
+    "prettier-eslint-cli": "^4.7.1",
+    "tap-spec": "^5.0.0",
+    "tape": "^4.9.0",
+    "tape-promise": "^4.0.0"
+  },
+  "buildDependencies": [
+    "babel-cli",
+    "babel-plugin-add-module-exports",
+    "babel-preset-env"
+  ]
+}
