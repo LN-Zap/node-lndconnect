@@ -13,7 +13,7 @@
     "build": "npm run clean && babel src --out-dir dist",
     "clean": "rm -r ./dist",
     "preversion": "npm test",
-    "prepack": "cp dist/*.js .",
+    "prepack": "npm build && cp dist/*.js .",
     "postpack": "rm *.js"
   },
   "files": [
