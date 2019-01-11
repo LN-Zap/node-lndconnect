@@ -2,7 +2,7 @@
   "name": "lndconnect",
   "version": "0.1.0",
   "description": "Generate and parse lndconnect uris",
-  "main": "./dist/index.js",
+  "main": "./index.js",
   "engines": {
     "node": ">=6.0.0",
     "npm": ">=4.0.0"
@@ -10,16 +10,15 @@
   "scripts": {
     "test": "babel-tape-runner test/*.js | tap-spec",
     "lint": "prettier-eslint --write \"./**/*.{js,json,md}\"",
-    "build": "babel src --out-dir dist",
+    "build": "npm run clean && babel src --out-dir dist",
     "clean": "rm -r ./dist",
     "preversion": "npm test",
-    "prepack": "npm run build"
+    "prepack": "cp dist/*.js .",
+    "postpack": "rm *.js"
   },
   "files": [
     ".babelrc",
-    "config",
-    "dist",
-    "lib"
+    "*.js"
   ],
   "bin": {
     "lnd": "./dist/bin/lnd",
