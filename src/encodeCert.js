@@ -16,7 +16,7 @@ const encodeCert = async certPath => {
   lines = lines.filter(line => line != '')
   lines.pop()
   lines.shift()
-  return base64url.encode(lines.join(''))
+  return base64url.fromBase64(lines.join(''))
 }
 
 export default encodeCert
