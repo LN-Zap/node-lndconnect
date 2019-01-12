@@ -27,28 +27,6 @@ npm install lndconnect --save
 
 ## Usage
 
-**encodeCert(certPath<string>):**
-
-```javascript
-import { encodeCert } from 'lndconnect'
-
-const certPath = path.join(__dirname, 'tls.cert')
-const cert = await encodeCert(certPath)
-
-expect(cert).toEqual('MIICuDCCAl...')
-```
-
-**encodeMacaroon(macaroonPath<string>):**
-
-```javascript
-import { encodeMacaroon } from 'lndconnect'
-
-const macaroonPath = path.join(__dirname, 'admin.macaroon')
-const macaroon = await encodeMacaroon(macaroonPath)
-
-expect(macaroon).toEqual('macaroon=AgEDbG5kAr...')
-```
-
 **encode({ host<string>, cert<string>, macaroon<string> }):**
 
 ```javascript
@@ -72,7 +50,59 @@ const { host, cert, macaroon } = decode('lndconnect://1.2.3.4:10009?cert=MIICuDC
 
 expect(host).toEqual('1.2.3.4:10009')
 expect(cert).toEqual('MIICuDCCAl...')
+expect(macaroon).toEqual('0201036c6...')
+```
+
+#### Certificate
+
+**encodeCert(certPath<string>):**
+
+```javascript
+import { encodeCert } from 'lndconnect'
+
+const certPath = path.join(__dirname, 'tls.cert')
+const cert = await encodeCert(certPath)
+
+// returns base64url encoded DER cert.
+expect(cert).toEqual('MIICuDCCAl...')
+```
+
+**decodeCert(encodedCert<string>):**
+
+```javascript
+import { decodeCert } from 'lndconnect'
+
+// pass a base64url encoded DER cert
+const cert = decodeCert(encodedCert)
+
+// returns utf8 encoded PEM cert.
+expect(cert).toEqual('-----BEGIN CERTIFICATE-----\n...')
+```
+
+#### Macaroon
+
+**encodeMacaroon(macaroonPath<string>):**
+
+```javascript
+import { encodeMacaroon } from 'lndconnect'
+
+const macaroonPath = path.join(__dirname, 'admin.macaroon')
+const macaroon = await encodeMacaroon(macaroonPath)
+
+// returns base64url encoded macaroon.
 expect(macaroon).toEqual('AgEDbG5kAr...')
+```
+
+**decodeMacaroon(encodedMacaroon<string>):**
+
+```javascript
+import { decodeMacaroon } from 'lndconnect'
+
+// pass a base64url encoded macaroon
+const macaroon = await decodeMacaroon(encodedMacaroon)
+
+// returns hex encoded macaroon.
+expect(macaroon).toEqual('0201036c6...')
 ```
 
 ### Testing

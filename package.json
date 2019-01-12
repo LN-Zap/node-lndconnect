@@ -11,7 +11,7 @@
     "test": "babel-tape-runner test/*.js | tap-spec",
     "lint": "prettier-eslint --write \"./**/*.{js,json,md}\"",
     "build": "npm run clean && babel src --out-dir dist",
-    "clean": "rm -r ./dist",
+    "clean": "rimraf -r ./dist",
     "preversion": "npm test",
     "prepack": "npm run build && cp dist/*.js .",
     "postpack": "rm *.js"
@@ -58,6 +58,7 @@
     "prettier": "^1.13.5",
     "prettier-eslint": "^8.8.1",
     "prettier-eslint-cli": "^4.7.1",
+    "rimraf": "^2.6.3",
     "tap-spec": "^5.0.0",
     "tape": "^4.9.0",
     "tape-promise": "^4.0.0"

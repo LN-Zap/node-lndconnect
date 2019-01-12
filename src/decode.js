@@ -1,5 +1,7 @@
 import url from 'url'
 import querystring from 'querystring'
+import decodeCert from './decodeCert'
+import decodeMacaroon from './decodeMacaroon'
 
 /**
  * Decode an lndconnect url.
@@ -17,8 +19,8 @@ const decode = string => {
 
   return {
     host: parsedUrl.host,
-    cert: parsedQuery.cert,
-    macaroon: parsedQuery.macaroon,
+    cert: decodeCert(parsedQuery.cert),
+    macaroon: decodeMacaroon(parsedQuery.macaroon),
   }
 }
 
