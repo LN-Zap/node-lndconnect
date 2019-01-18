@@ -8,7 +8,7 @@ import decodeMacaroon from './decodeMacaroon'
  * @param  {String} lndconnect url to decode.
  * @return {Object} Lnd connect data (object containing host, cert, and macaroon keys).
  */
-const decode = string => {
+const decode = (string = '') => {
   const res = {}
   const parsedUrl = url.parse(string)
   const parsedQuery = querystring.parse(parsedUrl.query)

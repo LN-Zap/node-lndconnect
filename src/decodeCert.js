@@ -1,4 +1,6 @@
+import path from 'path'
 import base64url from 'base64url'
+import decodeUriComponent from 'decode-uri-component'
 
 /**
  * decode a tls certificate from a base64 encoded url string.
@@ -6,7 +8,17 @@ import base64url from 'base64url'
  * @return {Promise} decoded certificate
  */
 const decodeCert = certString => {
-  const cert = base64url.toBase64(certString)
+  if (!certString) {
+    return ''
+  }
+
+  const unescaped = decodeUriComponent(certString)
+
+  if (path.isAbsolute(unescaped)) {
+    return unescaped
+  }
+
+  const cert = base64url.toBase64(unescaped)
   var prefix = '-----BEGIN CERTIFICATE-----\n'
   var postfix = '-----END CERTIFICATE-----'
   return prefix + cert.match(/.{0,64}/g).join('\n') + postfix

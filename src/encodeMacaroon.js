@@ -1,17 +1,24 @@
-import fs from 'fs'
-import util from 'util'
 import base64url from 'base64url'
-
-const readFile = util.promisify(fs.readFile)
+import querystring from 'querystring'
+import untildify from 'untildify'
 
 /**
  * Encode a binary macaroon as a base64 encoded url string.
  * @param  {String} macaroonPath Path to macaroon file.
  * @return {Promise} Encoded macaroon
  */
-const encodeMacaroon = async macaroonPath => {
-  const macaroonData = await readFile(macaroonPath)
-  const macaroonBase64 = new Buffer.from(macaroonData, 'binary').toString('base64')
+const encodeMacaroon = (input, format = 'hex') => {
+  if (!input) {
+    return ''
+  }
+
+  // If we have a string, which does not look like hex treat it as a file path.
+  if (typeof input === 'string' && !/^[0-9a-fA-F]+$/.test(input)) {
+    return querystring.escape(untildify(input))
+  }
+
+  // Otherwise, base64url encode it.
+  const macaroonBase64 = new Buffer.from(input, format).toString('base64')
   return base64url.fromBase64(macaroonBase64)
 }
 

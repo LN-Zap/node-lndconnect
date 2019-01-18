@@ -27,21 +27,41 @@ npm install lndconnect --save
 
 ## Usage
 
-**encode({ host<string>, cert<string>, macaroon<string> }):**
+**format({ host, cert, macaroon }):**
+
+Formats a host / cert / macaroon combo into an lndconnect link.
+
+```javascript
+import { format } from 'lndconnect'
+
+const connectionString = format({
+  host: '1.2.3.4:10009',
+  cert: 'MIICuDCCAl...',
+  macaroon: '0201036c6...',
+})
+
+expect(connectionString).toEqual('lndconnect://1.2.3.4:10009?cert=MIICuDCCAl...&macaroon=0201036c6...')
+```
+
+**encode({ host, cert, macaroon }):**
+
+Encodes a host / cert / macaroon combo and formats into an lndconnect link.
 
 ```javascript
 import { encode } from 'lndconnect'
 
 const connectionString = encode({
   host: '1.2.3.4:10009',
-  cert: 'MIICuDCCAl...',
-  macaroon: 'AgEDbG5kAr...',
+  cert: '-----BEGIN CERTIFICATE-----\n...',
+  macaroon: '0201036c6...',
 })
 
 expect(connectionString).toEqual('lndconnect://1.2.3.4:10009?cert=MIICuDCCAl...&macaroon=AgEDbG5kAr...')
 ```
 
-**decode(lndconnectUri<string>):**
+**decode(lndconnectUri):**
+
+Decodes an lndconnect link into it's component parts (host / cert as utf8 / macaroon as hex)
 
 ```javascript
 import { decode } from 'lndconnect'
@@ -55,7 +75,9 @@ expect(macaroon).toEqual('0201036c6...')
 
 #### Certificate
 
-**encodeCert(certPath<string>):**
+**encodeCert(cert, format):**
+
+Encodes a certificate (String or Buffer) to base64url encoded DER format.
 
 ```javascript
 import { encodeCert } from 'lndconnect'
@@ -67,7 +89,9 @@ const cert = await encodeCert(certPath)
 expect(cert).toEqual('MIICuDCCAl...')
 ```
 
-**decodeCert(encodedCert<string>):**
+**decodeCert(encodedCert):**
+
+Decodes a certificate from base64url encoded DER format to a string.
 
 ```javascript
 import { decodeCert } from 'lndconnect'
@@ -81,7 +105,9 @@ expect(cert).toEqual('-----BEGIN CERTIFICATE-----\n...')
 
 #### Macaroon
 
-**encodeMacaroon(macaroonPath<string>):**
+**encodeMacaroon(macaroon, format):**
+
+Encodes a binary macaroon (String or Buffer) to base64url encoded string.
 
 ```javascript
 import { encodeMacaroon } from 'lndconnect'
@@ -93,7 +119,9 @@ const macaroon = await encodeMacaroon(macaroonPath)
 expect(macaroon).toEqual('AgEDbG5kAr...')
 ```
 
-**decodeMacaroon(encodedMacaroon<string>):**
+**decodeMacaroon(encodedMacaroon):**
+
+Decodes a base64url encoded macaroon to a hex encoded macaroon.
 
 ```javascript
 import { decodeMacaroon } from 'lndconnect'
