@@ -1,6 +1,5 @@
 import path from 'path'
 import base64url from 'base64url'
-import decodeUriComponent from 'decode-uri-component'
 
 /**
  * decode a binary macaroon as a base64 decoded url string.
@@ -12,13 +11,13 @@ const decodeMacaroon = macaroonString => {
     return ''
   }
 
-  const unescaped = decodeUriComponent(macaroonString)
+  const unescaped = base64url.decode(macaroonString)
 
   if (path.isAbsolute(unescaped)) {
     return unescaped
   }
 
-  return base64url.toBuffer(unescaped).toString('hex')
+  return base64url.toBuffer(macaroonString).toString('hex')
 }
 
 export default decodeMacaroon

@@ -1,6 +1,5 @@
 import path from 'path'
 import base64url from 'base64url'
-import querystring from 'querystring'
 import untildify from 'untildify'
 
 /**
@@ -25,7 +24,7 @@ const encodeCert = (input, format = 'utf8') => {
     return base64url.fromBase64(lines.join(''))
   }
   // Otherwise assume it is a filepath and encode it as an absolute file url.
-  return querystring.escape(untildify(lines[0]))
+  return base64url.encode(untildify(lines[0]))
 }
 
 export default encodeCert

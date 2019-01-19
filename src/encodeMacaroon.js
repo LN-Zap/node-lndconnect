@@ -1,5 +1,4 @@
 import base64url from 'base64url'
-import querystring from 'querystring'
 import untildify from 'untildify'
 
 /**
@@ -14,7 +13,7 @@ const encodeMacaroon = (input, format = 'hex') => {
 
   // If we have a string, which does not look like hex treat it as a file path.
   if (typeof input === 'string' && !/^[0-9a-fA-F]+$/.test(input)) {
-    return querystring.escape(untildify(input))
+    return base64url.encode(untildify(input))
   }
 
   // Otherwise, base64url encode it.
