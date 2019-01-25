@@ -1,5 +1,6 @@
 import base64url from 'base64url'
 import untildify from 'untildify'
+import strictUriEncode from 'strict-uri-encode'
 
 /**
  * Encode a binary macaroon as a base64 encoded url string.
@@ -13,7 +14,7 @@ const encodeMacaroon = (input, format = 'hex') => {
 
   // If we have a string, which does not look like hex treat it as a file path.
   if (typeof input === 'string' && !/^[0-9a-fA-F]+$/.test(input)) {
-    return base64url.encode(untildify(input))
+    return strictUriEncode(input)
   }
 
   // Otherwise, base64url encode it.

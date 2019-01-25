@@ -34,6 +34,8 @@
   },
   "dependencies": {
     "base64url": "^3.0.1",
+    "decode-uri-component": "^0.2.0",
+    "strict-uri-encode": "^2.0.0",
     "untildify": "^3.0.3"
   },
   "keywords": [

@@ -4,6 +4,7 @@ import encodeMacaroon from './encodeMacaroon'
 import decodeMacaroon from './decodeMacaroon'
 import encode from './encode'
 import decode from './decode'
+import parse from './parse'
 import format from './format'
 
 export default {
@@ -13,5 +14,6 @@ export default {
   decodeMacaroon,
   encode,
   decode,
+  parse,
   format,
 }
