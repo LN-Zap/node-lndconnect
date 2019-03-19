@@ -18,7 +18,7 @@ const decode = (string = '') => {
   }
 
   return {
-    host: parsedUrl.host,
+    host: parsedUrl.host || parsedQuery.host,
     cert: decodeCert(parsedQuery.cert),
     macaroon: decodeMacaroon(parsedQuery.macaroon),
   }
