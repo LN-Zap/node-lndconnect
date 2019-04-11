@@ -14,7 +14,7 @@ const encodeCert = (input, format = 'utf8') => {
 
   var cert = new Buffer.from(input, format).toString('utf8')
 
-  let lines = cert.split(/\n/)
+  let lines = cert.split(/[\r\n]+/)
   lines = lines.filter(line => line != '')
 
   // If its a cert, strip out the header and footer and bes64url encode it.
