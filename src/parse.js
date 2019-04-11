@@ -7,7 +7,6 @@ import querystring from 'querystring'
  * @return {Object} Lnd connect data (object containing host, cert, and macaroon keys).
  */
 const parse = (string = '') => {
-  const res = {}
   const parsedUrl = url.parse(string)
   const parsedQuery = querystring.parse(parsedUrl.query)
 
