@@ -1,5 +1,4 @@
 import base64url from 'base64url'
-import untildify from 'untildify'
 import strictUriEncode from 'strict-uri-encode'
 
 /**

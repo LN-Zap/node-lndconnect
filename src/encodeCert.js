@@ -1,4 +1,3 @@
-import path from 'path'
 import base64url from 'base64url'
 import strictUriEncode from 'strict-uri-encode'
 

@@ -1,4 +1,3 @@
-import path from 'path'
 import base64url from 'base64url'
 import decodeUriComponent from 'decode-uri-component'
 import untildify from 'untildify'
