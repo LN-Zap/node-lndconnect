@@ -47,7 +47,7 @@
   "homepage": "https://github.com/LN-Zap/node-lndconnect",
   "devDependencies": {
     "babel-cli": "6.26.0",
-    "babel-plugin-add-module-exports": "1.0.0",
+    "babel-plugin-add-module-exports": "1.0.2",
     "babel-plugin-source-map-support": "2.0.1",
     "babel-preset-env": "1.7.0",
     "babel-register": "6.26.0",
