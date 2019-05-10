@@ -9,7 +9,7 @@
 
 This package provides utilities for generating and parsing lndconnect uris.
 
-For more information take a look at the [specification of the uri format](https://github.com/LN-Zap/node-lndconnect/blob/master/lnd_connect_uri.md).
+For more information take a look at the [specification of the uri format](https://github.com/LN-Zap/lndconnect/blob/master/lnd_connect_uri.md).
 
 ## Table of Contents
 
