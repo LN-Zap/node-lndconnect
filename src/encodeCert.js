@@ -4,7 +4,7 @@ import strictUriEncode from 'strict-uri-encode'
 /**
  * Encode a tls certificate as a base64 encoded url string.
  * @param  {String} certPath Path to vertificate file.
- * @return {Promise} Encoded certificate
+ * @return {String} Encoded certificate
  */
 const encodeCert = (input, format = 'utf8') => {
   if (!input) {

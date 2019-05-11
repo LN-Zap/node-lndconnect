@@ -6,7 +6,7 @@ import { isAbsolute } from './utils'
 /**
  * decode a binary macaroon as a base64 decoded url string.
  * @param  {String} macaroonPath Path to macaroon file.
- * @return {Promise} decoded macaroon
+ * @return {String} decoded macaroon
  */
 const decodeMacaroon = macaroonString => {
   if (!macaroonString) {
