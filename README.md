@@ -83,7 +83,7 @@ Encodes a certificate (String or Buffer) to base64url encoded DER format.
 import { encodeCert } from 'lndconnect'
 
 const certPath = path.join(__dirname, 'tls.cert')
-const cert = await encodeCert(certPath)
+const cert = encodeCert(certPath)
 
 // returns base64url encoded DER cert.
 expect(cert).toEqual('MIICuDCCAl...')
@@ -113,7 +113,7 @@ Encodes a binary macaroon (String or Buffer) to base64url encoded string.
 import { encodeMacaroon } from 'lndconnect'
 
 const macaroonPath = path.join(__dirname, 'admin.macaroon')
-const macaroon = await encodeMacaroon(macaroonPath)
+const macaroon = encodeMacaroon(macaroonPath)
 
 // returns base64url encoded macaroon.
 expect(macaroon).toEqual('AgEDbG5kAr...')
@@ -127,7 +127,7 @@ Decodes a base64url encoded macaroon to a hex encoded macaroon.
 import { decodeMacaroon } from 'lndconnect'
 
 // pass a base64url encoded macaroon
-const macaroon = await decodeMacaroon(encodedMacaroon)
+const macaroon = decodeMacaroon(encodedMacaroon)
 
 // returns hex encoded macaroon.
 expect(macaroon).toEqual('0201036c6...')

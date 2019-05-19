@@ -4,7 +4,7 @@ import strictUriEncode from 'strict-uri-encode'
 /**
  * Encode a binary macaroon as a base64 encoded url string.
  * @param  {String} macaroonPath Path to macaroon file.
- * @return {Promise} Encoded macaroon
+ * @return {String} Encoded macaroon
  */
 const encodeMacaroon = (input, format = 'hex') => {
   if (!input) {
