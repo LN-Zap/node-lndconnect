@@ -59,7 +59,7 @@
     "prettier-eslint-cli": "4.7.1",
     "rimraf": "2.6.3",
     "tap-spec": "5.0.0",
-    "tape": "4.9.2",
+    "tape": "4.10.1",
     "tape-promise": "4.0.0"
   },
   "buildDependencies": [
