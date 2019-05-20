@@ -5,6 +5,11 @@
       "plugins": ["source-map-support"]
     }
   },
+  "env": {
+    "production": {
+      "sourceMaps": "inline"
+    }
+  },
   "presets": [
     ["env", {
       "targets": {
