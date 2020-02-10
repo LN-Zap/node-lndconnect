@@ -58,7 +58,7 @@
     "prettier": "1.18.2",
     "prettier-eslint": "9.0.1",
     "prettier-eslint-cli": "5.0.0",
-    "rimraf": "3.0.0",
+    "rimraf": "3.0.2",
     "source-map-support": "0.5.16",
     "tap-spec": "5.0.0",
     "tape": "4.11.0",
