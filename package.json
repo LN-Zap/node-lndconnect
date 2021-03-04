@@ -61,7 +61,7 @@
     "rimraf": "3.0.0",
     "source-map-support": "0.5.16",
     "tap-spec": "5.0.0",
-    "tape": "4.11.0",
+    "tape": "5.2.2",
     "tape-promise": "4.0.0"
   },
   "buildDependencies": [
